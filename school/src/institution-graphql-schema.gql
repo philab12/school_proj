@@ -1,0 +1,92 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Company {
+  id: ID!
+  schools: [School!]!
+}
+
+type DetailCompanyStructure {
+  id: ID!
+  schools: [School!]!
+}
+
+type State {
+  id: ID!
+  schools: [School!]!
+}
+
+type School {
+  id: ID!
+  school: String!
+  contact1: String!
+  postal_address: String
+  email: String!
+  state: State!
+  state_id: Float!
+  country: Country!
+  country_id: Float!
+  company: Company!
+  company_id: String!
+  detail_company_structure: DetailCompanyStructure!
+  detail_company_structure_id: String!
+  location: String!
+  date_establish: DateTime!
+  logo: String
+  old_student_name: String
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Country {
+  id: ID!
+  schools: [School!]!
+}
+
+type Query {
+  getAllSchools: [School!]!
+  getSchool(id: String!): School!
+}
+
+type Mutation {
+  createSchool(createSchoolInput: CreateSchoolInput!): School!
+  updateSchool(updateSchoolInput: UpdateSchoolInput!): School!
+  removeSchool(id: String!): School!
+}
+
+input CreateSchoolInput {
+  school: String!
+  contact1: String!
+  postal_address: String
+  email: String!
+  state_id: Float!
+  country_id: Float!
+  company_id: String!
+  detail_company_structure_id: String!
+  location: String!
+  date_establish: DateTime!
+  logo: String
+  old_student_name: String
+}
+
+input UpdateSchoolInput {
+  school: String
+  contact1: String
+  postal_address: String
+  email: String
+  state_id: Float
+  country_id: Float
+  company_id: String
+  detail_company_structure_id: String
+  location: String
+  date_establish: DateTime
+  logo: String
+  old_student_name: String
+  id: String!
+}

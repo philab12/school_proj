@@ -1,0 +1,79 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type State {
+  id: ID!
+  state: String!
+  country: Country!
+  country_id: Float!
+  state_code: String
+}
+
+type Country {
+  id: ID!
+  country: String!
+  iso3: String
+  iso2: String
+  numeric_code: String
+  phone_code: String
+  capital: String
+  currency: String
+  currency_name: String
+  currency_symbol: String
+  states: [State!]!
+}
+
+type Query {
+  getAllCountries: [Country!]!
+  getCountry(id: Int!): Country!
+  getAllStates: [State!]!
+  getState(id: Int!): State!
+}
+
+type Mutation {
+  createCountry(createCountryInput: CreateCountryInput!): Country!
+  updateCountry(updateCountryInput: UpdateCountryInput!): Country!
+  removeCountry(id: Int!): Country!
+  createState(createStateInput: CreateStateInput!): State!
+  updateState(updateStateInput: UpdateStateInput!): State!
+  removeState(id: Int!): State!
+}
+
+input CreateCountryInput {
+  country: String!
+  iso3: String
+  iso2: String
+  numeric_code: String
+  phone_code: String
+  capital: String
+  currency: String
+  currency_name: String
+  currency_symbol: String
+}
+
+input UpdateCountryInput {
+  country: String
+  iso3: String
+  iso2: String
+  numeric_code: String
+  phone_code: String
+  capital: String
+  currency: String
+  currency_name: String
+  currency_symbol: String
+  id: Int!
+}
+
+input CreateStateInput {
+  state: String!
+  country_id: Float!
+  state_code: String
+}
+
+input UpdateStateInput {
+  state: String
+  country_id: Float
+  state_code: String
+  id: Int!
+}

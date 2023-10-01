@@ -1,0 +1,138 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type State {
+  id: ID!
+  companies: [Company!]!
+  detail_company_structures: [DetailCompanyStructure!]!
+}
+
+type CompanyStructure {
+  id: ID!
+  company: Company!
+  company_id: String!
+  structure: String!
+  level: Int!
+  detail_company_structures: [DetailCompanyStructure!]!
+}
+
+type DetailCompanyStructure {
+  id: ID!
+  company: Company!
+  company_id: String!
+  company_structure: CompanyStructure!
+  company_structure_id: String!
+  detail_company_structure: String!
+  higher_structures: [DetailCompanyStructure!]!
+  higher_structure: DetailCompanyStructure
+  higher_structure_id: String
+  is_active: String!
+  contact1: String!
+  email: String
+  country: Country!
+  country_id: Float
+  state: State!
+  state_id: Float
+}
+
+type Country {
+  id: ID!
+  companies: [Company!]!
+  detail_company_structures: [DetailCompanyStructure!]!
+}
+
+type Company {
+  id: ID!
+  name: String!
+  contact1: String!
+  contact2: String!
+  email: String!
+  company_structures: [CompanyStructure!]!
+  detail_company_structures: [DetailCompanyStructure!]!
+  country: Country!
+  country_id: Float
+  state: State!
+  state_id: Float
+  is_active: String!
+}
+
+type Query {
+  getAllCompanies: [Company!]!
+  company(id: String!): Company!
+  getAllcompanyStructure(company_id: String!): [CompanyStructure!]!
+  getCompanyStructure(id: String!): CompanyStructure!
+  getAllDetailCompanyStructure(company_id: String!): [DetailCompanyStructure!]!
+  getDetailCompanyStructure(id: String!): DetailCompanyStructure!
+}
+
+type Mutation {
+  createCompany(createCompanyInput: CreateCompanyInput!): Company!
+  updateCompany(updateCompanyInput: UpdateCompanyInput!): Company!
+  removeCompany(id: String!): Company!
+  createCompanyStructure(createCompanyStructureInput: CreateCompanyStructureInput!): CompanyStructure!
+  updateCompanyStructure(updateCompanyStructureInput: UpdateCompanyStructureInput!): CompanyStructure!
+  removeCompanyStructure(id: String!): CompanyStructure!
+  createDetailCompanyStructure(createDetailCompanyStructureInput: CreateDetailCompanyStructureInput!): DetailCompanyStructure!
+  updateDetailCompanyStructure(updateDetailCompanyStructureInput: UpdateDetailCompanyStructureInput!): DetailCompanyStructure!
+  removeDetailCompanyStructure(id: String!): DetailCompanyStructure!
+}
+
+input CreateCompanyInput {
+  name: String!
+  contact1: String!
+  contact2: String
+  email: String!
+  country_id: Float!
+  state_id: Float!
+  is_active: String!
+}
+
+input UpdateCompanyInput {
+  name: String
+  contact1: String
+  contact2: String
+  email: String
+  country_id: Float
+  state_id: Float
+  is_active: String
+  id: String!
+}
+
+input CreateCompanyStructureInput {
+  company_id: String!
+  structure: String!
+  level: Int!
+}
+
+input UpdateCompanyStructureInput {
+  company_id: String
+  structure: String
+  level: Int
+  id: String!
+}
+
+input CreateDetailCompanyStructureInput {
+  company_id: String!
+  company_structure_id: String!
+  detail_company_structure: String!
+  higher_structure_id: String
+  is_active: String!
+  contact1: String!
+  email: String
+  country_id: Float!
+  state_id: Float!
+}
+
+input UpdateDetailCompanyStructureInput {
+  company_id: String
+  company_structure_id: String
+  detail_company_structure: String
+  higher_structure_id: String
+  is_active: String
+  contact1: String
+  email: String
+  country_id: Float
+  state_id: Float
+  id: String!
+}
