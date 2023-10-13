@@ -1,0 +1,43 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type School {
+  id: ID!
+  levels: [Level!]!
+}
+
+type Level {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  school: School!
+  school_id: String!
+  level: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Query {
+  level(id: String!): Level!
+}
+
+type Mutation {
+  createLevel(createLevelInput: CreateLevelInput!): Level!
+  updateLevel(updateLevelInput: UpdateLevelInput!): Level!
+  removeLevel(id: String!): Level!
+}
+
+input CreateLevelInput {
+  level: String!
+  school_id: String!
+}
+
+input UpdateLevelInput {
+  level: String
+  school_id: String
+  id: ID!
+}

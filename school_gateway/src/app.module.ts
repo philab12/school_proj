@@ -17,6 +17,7 @@ import { IntrospectAndCompose } from '@apollo/gateway';
           { name: 'institutions', url: 'http://localhost:3001/graphql' },
           { name: 'country', url: 'http://localhost:3002/graphql' },
            { name: 'school', url: 'http://localhost:3003/graphql' },
+           { name: 'level', url: 'http://localhost:3004/graphql' },
         ],
       }),
     }

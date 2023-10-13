@@ -1,4 +1,4 @@
-import { Resolver, Query, Mutation, Args, Int, ResolveField, Parent } from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args, Int, ResolveField, Parent, ResolveReference } from '@nestjs/graphql';
 import { SchoolService } from './school.service';
 import { School } from './entities/school.entity';
 import { CreateSchoolInput } from './dto/create-school.input';
@@ -57,6 +57,12 @@ export class SchoolResolver {
   @ResolveField()
   detail_company_structure(@Parent() school:School){
     return {__typename:"School", id:school.detail_company_structure_id}
+  }
+
+
+  @ResolveReference()
+  resolvereference(ref:{__typename:string, id:string}){
+    return this.schoolService.findOne(ref.id);
   }
 
   
